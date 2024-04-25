@@ -43,10 +43,8 @@ match_score = 1
 miss_score = -1
 gap_penalty = -2
 
-# Executa o algoritmo smith-waterman para calcular a matriz de pontuações
 scores_matrix = smith_waterman(seq1, seq2, match_score, miss_score, gap_penalty)
 
 print("\nMatriz de pontuacoes:")
-# Imprime a matriz
 for row in reversed(scores_matrix):
     print(row)
