@@ -1,4 +1,5 @@
 import smith_waterman as sw
+import backtrace as tb
 
 def main():
     # Sequências a serem alinhadas
@@ -15,6 +16,13 @@ def main():
     print("\nMatriz de pontuacoes:")
     for row in reversed(scores_matrix):
         print(row)
+
+    # Realiza o traceback para obter o alinhamento das sequências
+    aligned_seq1, aligned_seq2 = tb.trace_back(scores_matrix, seq1, seq2, gap_penalty)
+
+    # Imprime as sequências alinhadas
+    print("\nSequencia 1:", aligned_seq1)
+    print("Sequencia 2:", aligned_seq2)
 
 
 if __name__ == "__main__":
