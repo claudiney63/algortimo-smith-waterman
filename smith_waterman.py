@@ -18,17 +18,17 @@ def smith_waterman(seq1, seq2, match_score, miss_score, gap_penalty):
 
             # Cálculo dos pontos para match, delete e insert
             match_or_miss = matrix[i - 1][j - 1] + (match_score if seq1[i - 1] == seq2[j - 1] else miss_score)
-            print(seq1[i - 1], seq2[j - 1])
+            # print(seq1[i - 1], seq2[j - 1])
             gap1_row = matrix[i - 1][j] + gap_penalty
             gap2_col = matrix[i][j - 1] + gap_penalty
 
-            print(f"match_or_miss: {match_or_miss}, gap1_row: {gap1_row}, gap2_col: {gap2_col}")
+            # print(f"match_or_miss: {match_or_miss}, gap1_row: {gap1_row}, gap2_col: {gap2_col}")
             
             # Atribuição do maior valor entre match, delete e insert à célula atual
             matrix[i][j] = max(match_or_miss, gap1_row, gap2_col)
 
-            for row in matrix:
-                print(row)
-            print()
+            # for row in matrix:
+            #     print(row)
+            # print()
 
     return matrix  # Retorna a matriz de pontuações

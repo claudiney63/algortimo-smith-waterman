@@ -1,29 +1,22 @@
 import smith_waterman as sw
 import backtrace as tb
+import read_input_from_file as rif
+import write_alignment_to_file as waf
 
-def main():
-    # Sequências a serem alinhadas
-    seq1 = "ATGGGAA"
-    seq2 = "CACTCG"
-
-    # Pontuações para match, mismatch e gap
-    match_score = 1
-    miss_score = -1
-    gap_penalty = -2
-
+def main(seq1, seq2, match_score, miss_score, gap_penalty, output_file):
+    # Executa o algoritmo de Smith-Waterman
     scores_matrix = sw.smith_waterman(seq1, seq2, match_score, miss_score, gap_penalty)
-
-    print("\nMatriz de pontuacoes:")
-    for row in reversed(scores_matrix):
-        print(row)
 
     # Realiza o traceback para obter o alinhamento das sequências
     aligned_seq1, aligned_seq2 = tb.trace_back(scores_matrix, seq1, seq2, gap_penalty)
 
-    # Imprime as sequências alinhadas
-    print("\nSequencia 1:", aligned_seq1)
-    print("Sequencia 2:", aligned_seq2)
+    # Escreve o alinhamento e a matriz de pontuações no arquivo de saída
+    waf.write_alignment_to_file(aligned_seq1, aligned_seq2, scores_matrix, output_file)
 
 
 if __name__ == "__main__":
-    main()
+    input_file = "input.txt"
+    output_file = "output.txt"
+    seq1, seq2, scores = rif.read_input_from_file(input_file)
+    match_score, miss_score, gap_penalty = scores
+    main(seq1, seq2, match_score, miss_score, gap_penalty, output_file)
