@@ -14,3 +14,4 @@ def write_alignment_to_file(aligned_seq1, aligned_seq2, scores_matrix, seq1, seq
         file.write("\tU\t" + "\t".join(seq2) + "\n")
         file.write("\nAlinhamento 1: " + aligned_seq1 + "\n")
         file.write("Alinhamento 2: " + aligned_seq2 + "\n")
+        file.write("\nNumero chamada: 8 \n")
