@@ -16,7 +16,7 @@ def smith_waterman(seq1, seq2, match_score, miss_score, gap_penalty):
     for i in range(1, len(seq1) + 1):
         for j in range(1, len(seq2) + 1):
 
-            # Cálculo dos pontos para match, delete e insert
+            # Cálculo dos scores
             match_or_miss = matrix[i - 1][j - 1] + (match_score if seq1[i - 1] == seq2[j - 1] else miss_score)
             # print(seq1[i - 1], seq2[j - 1])
             gap1_row = matrix[i - 1][j] + gap_penalty
